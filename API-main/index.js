@@ -31,7 +31,7 @@ const accessLogStream = fs.createWriteStream(path.join(logsFolder, 'access.log')
 app.use(morgan('combined', { stream: accessLogStream }));
 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-app.use(cors);
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
@@ -69,6 +69,10 @@ async function fetchSwaggerDocs() {
     // Example function to fetch Swagger documentation
     return 'Swagger documentation content';
 }
+
+app.get("/",(req,res)=>{
+  res.json("Hello");
+})
 
 // Use routers
 app.use('/', userRouter);
