@@ -31,7 +31,12 @@ const accessLogStream = fs.createWriteStream(path.join(logsFolder, 'access.log')
 app.use(morgan('combined', { stream: accessLogStream }));
 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-app.use(cors());
+app.use(cors(
+  {
+    origin: ["https://full-stack-project-4d9c.vercel.app"],
+    methods: ["POST","GET"],
+    credentials: true
+));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
