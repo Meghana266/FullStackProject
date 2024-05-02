@@ -27,7 +27,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }} # Changed hashFiles pattern to look for package-lock.json in all directories
+          key: ${{ runner.os }}-node-${{ hashFiles('API-main/package-lock.json') }} # Adjusted hashFiles pattern to look for package-lock.json in the API-main directory
           restore-keys: |
             ${{ runner.os }}-node-
 
