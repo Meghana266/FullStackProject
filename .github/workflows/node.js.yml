@@ -27,10 +27,10 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('/package-lock.json') }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }} # Changed hashFiles pattern to look for package-lock.json in all directories
           restore-keys: |
             ${{ runner.os }}-node-
-            
+
       - name: Install Dependencies
         run: npm ci
 
